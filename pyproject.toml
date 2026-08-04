@@ -1,0 +1,62 @@
+[project]
+name = "human-biology-course"
+version = "0.1.0"
+description = "Python course for Human Biology"
+requires-python = ">=3.12,<3.14"
+
+dependencies = [
+    "biopython~=1.85",
+    "ipykernel~=6.30",
+    "jupyter~=1.1",
+    "jupytext~=1.17",
+    "jupyterlab~=4.4",
+    "nbconvert~=7.16",
+    "numpy~=2.3",
+    "matplotlib~=3.10",
+    "openpyxl~=3.1",
+    "pandas~=3.0",
+    "pyarrow~=21.0",
+    "requests~=2.32",
+    "scipy~=1.16",
+    "scikit-learn~=1.7",
+    "seaborn~=0.13",
+    "statsmodels~=0.14",
+    "tqdm~=4.67",
+]
+
+[dependency-groups]
+dev = [
+    "pytest~=8.4",
+    "ruff~=0.12",
+    "markdown~=3.8",
+    "nbformat~=5.10",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "ANN001", # for simplicity may not add type annotations for arguments
+    "ANN003", # for simplicity may not add type annotations for **kwargs
+    "ANN201", # for simplicity may not add type annotations for return values
+    "B015", # allowed useless comparison
+    "B018", # allow useless expressions
+    "COM812", # ruff formatter unfortunately removes commas
+    "D100", # missing docstring in module
+    "D103", # we use minimal docstrings for our functions here
+    "D203", # incorrect-blank-line-before-class is incompatible with D211 (requires blank line before class)
+    "D213", # "multi-line-summary-second-line" is incomparible with D212 (multi-line-summary-first-line)
+    "E402", # module level import not at top of file (for educational purposes)
+    "E501", # line too long (not relevant in many cases where we transform to jupyter notebooks)
+    "ERA001", # allow commented out code
+    "FIX002", # allow TODOs
+    "INP001", # no need for __init__.py everywhere
+    "PD010", # pivot is used with polars; false positive
+    "PD901", # `df` is a bad variable name. Be kinder to your future self. <- it's a great name
+    "PLR2004", # allow magic values for educational purposes
+    "PTH", # for now we skip this rule which enforces the use of pathlib
+    "T201", # allow print statements
+    "TD003", # allow TODOs without issue link
+]
