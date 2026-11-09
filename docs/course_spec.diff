@@ -1,0 +1,278 @@
+--- course_spec.orig.md	2026-11-06 15:43:11.300236432 +0000
++++ course_spec.md	2026-11-06 15:43:27.635778504 +0000
+@@ -1,7 +1,7 @@
+ # Course Concept: Data Science with Python for Biomedical Students
+ 
+-I want to teach a python and data analysis course for bachelor students using a coimbination of jupyter notebooks that i use in a lecture to demonstrate the basic concepts followed by a hands-on session, where the people can explore this by themselves.
+-The course is a one week block course intended for the level of bachelor students without practical python experience. They do however have a basic knowledsge of biology, medical research, genetics and DNA sequencing. Rather than teaching Python for its own sake, we teach Python as a tool for biomedical data analysis, with AI as an integral part of the entire workflow. Students need to be able to generate code (with AI assistance) and execute it, but also be able to assess, whether the analysis is scientifcally sound.
++I want to teach a python and data analysis course for bachelor students using a combination of jupyter notebooks that i use in a lecture to demonstrate the basic concepts followed by a hands-on session, where the people can explore this by themselves.
++The course is a one week block course intended for the level of bachelor students without practical python experience. They do however have a basic knowledge of biology, medical research, genetics and DNA sequencing. Rather than teaching Python for its own sake, we teach Python as a tool for biomedical data analysis, with AI as an integral part of the entire workflow. Students need to be able to generate code (with AI assistance) and execute it, but also be able to assess, whether the analysis is scientifically sound.
+ 
+ We are mostly working with molecular cancer research data. 
+ More precisely NGS data (RNAseq, scRNAseq, mutations), counts data and whatever other biological data might be reasonable for showcasing certain concepts.
+@@ -21,8 +21,8 @@
+ - to comprehend code and identify used python concepts
+ - to debug code, read tracebacks and exceptions, use AI for troubleshooting
+ - to create test cases and check the validity of the code with them
+-- to assess, if data analysis and calcualtions are valid and appropriate
+-- to spot erroneuos AI suggestions and correct them
++- to assess, if data analysis and calculations are valid and appropriate
++- to spot erroneous AI suggestions and correct them
+ - to interpret and critically reflect results scientifically without trusting AI
+ - how to analyse and visualise data independently.
+ - to document the code, AI usage, analysis design transparently 
+@@ -79,7 +79,7 @@
+ 
+ For each course block, I need two jupyter notebooks. The first one should be the lecture notebook. 
+ This is intended as a digital lecture script. 
+-While it should contain executable code to illustrate the concepts (I will execute the cells as I go along the lecture), it is also intended as lookup for the students containing the relevant informations they need, so that they can revisit that at any time later. So for the sake of reusability, we want to explain the concepts thoroughly so that they are self-explanatory without my narrative.
++While it should contain executable code to illustrate the concepts (I will execute the cells as I go along the lecture), it is also intended as lookup for the students containing the relevant information they need, so that they can revisit that at any time later. So for the sake of reusability, we want to explain the concepts thoroughly so that they are self-explanatory without my narrative.
+ The second notebook is a Hands-On notebook, where the students should test out the newly introduced concepts with given exercises.
+ 
+ 
+@@ -94,22 +94,22 @@
+ 7. AI corner: How can AI be used to help with these topics?
+ 8. Summary of the most important concepts.
+ 
+-Goal: explaining concepts, demonstrate code, show examples, explain AI possibilities, adress typical mistakes and pitfalls, communicate knowledge
++Goal: explaining concepts, demonstrate code, show examples, explain AI possibilities, address typical mistakes and pitfalls, communicate knowledge
+ 
+ An example for the AI corner:
+ 
+-Explain how AIcan help wqith a topic an showcase it:
++Explain how AI can help with a topic and showcase it:
+ 1. Which benefit can AI give with this concept?
+-2. What ius a good prompt?
++2. What is a good prompt?
+ 3. What is a bad or incomplete prompt?
+ 4. How can I check the AI answer?
+ 5. Which mistakes can the AI make?
+ 
+-Example for pythin functions:
++Example for Python functions:
+ 
+ AI Corner: Generating and understanding Python functions
+ 
+-Show a simple functrion for GC content calculation.
++Show a simple function for GC content calculation.
+ 
+ The prompt:
+ "I am analysing DNA sequences in a biomedical research context.
+@@ -136,7 +136,7 @@
+ 4. code cells with partial code to be completed (insert as 'commented out' code, so that it does not raise exceptions during testing).
+ 5. exercises where the students need to write their own code
+ 6. AI challenges: exercises where the students should use AI explicitly
+-7. Questions for reflexion: What does the code? Why does it work?
++7. Questions for reflection: What does the code? Why does it work?
+ 8. Knowledge section at the very end: Summary and explanation of the most important concepts and example solutions to the exercises.
+ 
+ Goal: apply concepts, write code, solve problems, use AI deliberately, identify and solve errors independently, solidify the knowledge
+@@ -144,13 +144,15 @@
+ # Major didactic rules
+ 
+ - make the lectures not too long. They need to contain the relevant concepts in an understandable way and be usable as a reference later, but they should not be overloaded.
++- Several blocks below list more topics than fit into 1.5 hours for complete beginners. The agent must NOT silently drop or silently squeeze topics. In the syllabus it flags overloaded blocks and proposes what to move (to another block, to an optional 'further reading' section, or to a mention only), and I decide.
++- Only use Python concepts that were introduced in the current or an earlier block. If a library function requires a concept that has not been introduced yet, either avoid it or explain it briefly where it is first needed.
+ - the lecture should communicate the concepts. The exercises forces the students to apply the concepts.
+-- hands-on exercises should not be just a reacpitulation, but also contain small problems that demands independent and problem-solving thinking.
++- hands-on exercises should not be just a recapitulation, but also contain small problems that demands independent and problem-solving thinking.
+ - construct the exercises with an increasing difficulty ladder, starting with simple exercises and becoming more demanding.
+ - example data used throughout the course should follow a consistent theme and build upon each lesson. It should represent typical cancer research data and contain:
+-  -- Patient- and Sample informationen
++  -- Patient and sample information
+   -- Tumor- and control samples
+-  -- gen expression data
++  -- gene expression data
+   -- mutation status of selected genes
+   -- experimental measurements
+ 
+@@ -159,21 +161,38 @@
+ 
+ **5 days · 10 blocks**
+ 
+-**10** – Lecture and practical exercise blocks
++**10** – Course blocks. Each block = one 1.5-hour lecture followed by one 1.5-hour hands-on session (2 notebooks per block, 20 notebooks in total)
+ 
+-**15 hours** – Total lecture time
++**15 hours** – Total lecture time (10 × 1.5 h)
+ 
+-**15 hours** – Total practical exercise time
++**15 hours** – Total hands-on time (10 × 1.5 h)
+ 
+ **30 hours** – Total contact time
+ 
++**How to read the block descriptions below**
++
++- Every block below has BOTH a lecture notebook (`Lecture_NN`) and a hands-on notebook (`Hands_on_NN`). The topic list of a block applies to the whole block: the lecture teaches the concepts, the hands-on session practises them.
++- **AI component** = content for the "AI corner" of the lecture notebook. **AI task** = content for the "AI challenge" in the hands-on notebook. Where a block names only one of the two, the other one is derived from it by the agent and proposed in the syllabus for my approval.
++
++## Cross-cutting topics the syllabus must cover
++
++The block lists above do not mention the following topics, but later blocks and the learning goals depend on them. In the syllabus, the agent proposes in which block each one is introduced (and which block it takes time from), and I decide:
++
++- `import`, modules and libraries (`import numpy as np`, installed packages versus the standard library). Needed before Block 05 at the latest, ideally earlier.
++- String handling: indexing and slicing, common string methods (`upper()`, `count()`, `replace()`), f-strings. Needed for the DNA sequence functions in Block 04.
++- List comprehensions (AI-generated code uses them constantly, and students must be able to read them).
++- Reading tracebacks and recognising common exception types (`NameError`, `TypeError`, `KeyError`, `IndexError`, `ValueError`). A learning goal, but no block lists it.
++- Simple test cases with `assert` (a learning goal, but no block lists it).
++- Library versions: AI answers often use outdated idioms (for example older pandas or NumPy syntax). Students should learn to check the installed versions and the documentation.
++- Git basics, if they are not covered completely by the setup instructions.
++
+ ## Day 1 – Introduction to Python and Programming
+ 
+ **Objective:** Students understand the working environment and can write and follow simple Python instructions.
+ 
+ ### Block 01 – Python, Jupyter and AI
+ 
+-*Lecture · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
+ 
+ **Topics**
+ 
+@@ -182,7 +201,7 @@
+ - Jupyter Notebooks: kernels, cells, Markdown and code
+ - VS Code: interface, Python environment, Jupyter integration and file management
+ - Getting started: `print()`, comments and simple calculations
+-- reproducability: what does it mean? why do analysis have to be repeatable at any time?
++- reproducibility: what does it mean? why do analysis have to be repeatable at any time?
+ - jupyter notebooks, order of execution, why should we restart the kernel and rerun from time to time
+ - importance of documentation
+ - Jupyter shortcuts and useful features
+@@ -192,7 +211,9 @@
+ 
+ ### Block 02 – Variables, Data Types and Operators
+ 
+-*Practical exercise · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
++
++**Topics**
+ 
+ - Writing first Python instructions
+ - Defining variables and assigning values
+@@ -211,7 +232,7 @@
+ 
+ ### Block 03 – Control Flow and Data Structures
+ 
+-*Lecture · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
+ 
+ **Topics**
+ 
+@@ -228,9 +249,9 @@
+ 
+ ### Block 04 – Functions and Biological Programming Tasks
+ 
+-*Practical exercise · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
+ 
+-**Topics and exercises**
++**Topics**
+ 
+ - Creating custom functions with `def`
+ - Parameters, arguments and return values
+@@ -252,7 +273,7 @@
+ 
+ ### Block 05 – NumPy: Numerical Data Analysis
+ 
+-*Lecture · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
+ 
+ **Topics**
+ 
+@@ -260,12 +281,11 @@
+ - Arrays, vectors and matrices
+ - Dimensions, shape and data types
+ - Creating arrays: `np.array()`, `np.zeros()`, `np.ones()`, `np.arange()`, `np.linspace()`
+-- random numbers and np.random.seed() or random.seed()
+ - Indexing and slicing
+ - Boolean masking
+ - Element-wise calculations and broadcasting
+ - Statistical functions: mean, median and standard deviation
+-- Random numbers with `np.random`
++- Random numbers with `np.random` and reproducible seeds (`np.random.seed()`, `random.seed()`)
+ 
+ **Biological context:** Gene expression data, experimental measurements and concentration series.
+ 
+@@ -273,9 +293,9 @@
+ 
+ ### Block 06 – Pandas: Working with Tables
+ 
+-*Practical exercise · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
+ 
+-**Topics and exercises**
++**Topics**
+ 
+ - What is Pandas?
+ - Series and DataFrames
+@@ -301,7 +321,7 @@
+ 
+ ### Block 07 – Matplotlib: Fundamentals of Data Visualisation
+ 
+-*Lecture · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
+ 
+ **Topics**
+ 
+@@ -320,9 +340,9 @@
+ 
+ ### Block 08 – Seaborn and Exploratory Data Visualisation
+ 
+-*Practical exercise · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
+ 
+-**Topics and exercises**
++**Topics**
+ 
+ - What is Seaborn, and how does it differ from Matplotlib?
+ - Histograms and distributions
+@@ -343,7 +363,7 @@
+ 
+ ### Block 09 – Data Quality, Statistics and Interpretation
+ 
+-*Lecture · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
+ 
+ **Topics**
+ 
+@@ -356,8 +376,7 @@
+ - p-values and their interpretation
+ - biological versus technical replicates
+ - effect sizes
+-- statistical pitfalls: small sample size, multiple hypothesis testing, biological versus technical replicates, pseudoreplication, outliers, normal distribution, correlation versus causation
+-- Correlation does not imply causation
++- statistical pitfalls: small sample size, multiple hypothesis testing, pseudoreplication, outliers, normal distribution assumption, correlation does not imply causation
+ - Reproducibility and documentation of analyses
+ 
+ **AI component**
+@@ -369,9 +388,9 @@
+ 
+ ### Block 10 – AI-Assisted Biomedical Data Analysis
+ 
+-*Practical exercise · 1.5 hours*
++*Lecture 1.5 h + Hands-on 1.5 h*
+ 
+-**Topics and exercises**
++**Topics**
+ 
+ - Loading an unfamiliar biological dataset
+ - Exploring its structure and data quality
+@@ -382,15 +401,15 @@
+ - Creating suitable visualisations
+ - Interpreting results
+ - Critically reviewing AI-generated results
+-- Documenting the analysis in a reproducible and transparent way (clean documentation, reproducability, separation of raw and processed data, version documentation and control)
++- Documenting the analysis in a reproducible and transparent way (clean documentation, reproducibility, separation of raw and processed data, version documentation and control)
+ 
+ **Final discussion:** What did AI do well? Where did it make mistakes? Which decisions did the students have to make themselves?
+ 
+ 
+ # Final examination after the course
+ 
+-To assess the students learing success, they have to pass a test and be graded. 
+-The idea is to give each student the assignment to analyze an unkown data set by creating an appropriate runnable jupyter notebook, that will analyze the data, find key insights and produce
++To assess the students learning success, they have to pass a test and be graded. 
++The idea is to give each student the assignment to analyze an unknown data set by creating an appropriate runnable jupyter notebook, that will analyze the data, find key insights and produce
+ appropriate plots and tables. The students need to answer some research questions about the dataset and may explicitly use AI assist to create these. 
+ In a final session, each student will present and explain their notebook and answer some questions about it in an oral presentation.
+ 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Data Science in Human Biology</title>
+  <title>README_german</title>
   <style>
     html {
       color: #1a1a1a;
@@ -229,13 +229,11 @@
   </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">Data Science in Human Biology</h1>
-</header>
 <h1
 id="data-science-in-der-humanbiologie---python-data-science-kurs">Data
 Science in der Humanbiologie - Python Data Science Kurs</h1>
-<p>Willkommen zum Python Kurs Data Science in der Humanbiologie.</p>
+<p>Willkommen zum Python Kurs <strong>Data Science in der
+Humanbiologie</strong>.</p>
 <p>In diesem Kurs verwenden wir Python, um biologische Daten zu
 analysieren, zu visualisieren und wissenschaftlich auszuwerten.</p>
 <p>Wir arbeiten mit:</p>
@@ -263,22 +261,26 @@ durch.</p>
 Visual Studio Code
         |
         ↓
-Python Umgebung (.venv)
+Python Umgebung (`.venv`)
         |
         ↓
-Jupyter Notebook
++----------------+
+|                |
+VS Code      JupyterLab
+|                |
++----------------+
         |
         ↓
 Datenanalyse</code></pre>
 <hr />
 <h1 id="voraussetzungen">Voraussetzungen</h1>
 <p>Du benötigst:</p>
-<p>☑ Computer mit Windows, macOS oder Linux ☑ Internetverbindung ☑
-GitHub-Account (für den Zugriff auf die Kursmaterialien)</p>
+<p>☑ Computer mit Windows, macOS oder Linux ☑ Internetverbindung</p>
 <p>Installiert werden:</p>
 <p>☑ Visual Studio Code ☑ Git ☑ uv ☑ benötigte VS-Code-Erweiterungen</p>
 <p>Die Python-Version und alle Python-Pakete werden automatisch durch
 <code>uv</code> verwaltet.</p>
+<hr />
 <h1 id="schritt-1---visual-studio-code-installieren">Schritt 1 - Visual
 Studio Code installieren</h1>
 <p>Lade Visual Studio Code herunter:</p>
@@ -290,7 +292,7 @@ es funktioniert.</p>
 <h1 id="schritt-2---git-installieren">Schritt 2 - Git installieren</h1>
 <p>Git benötigen wir, um die Kursmaterialien herunterzuladen und später
 zu aktualisieren.</p>
-<p>Download:</p>
+<p>Lade Git herunter:</p>
 <p><a href="https://git-scm.com/downloads">Git</a></p>
 <p>Installiere Git mit den Standardeinstellungen.</p>
 <hr />
@@ -312,59 +314,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="
 <p>Wenn eine Versionsnummer erscheint, ist Git erfolgreich
 installiert.</p>
 <hr />
-<h1 id="schritt-3---python-installieren">Schritt 3 - Python
-installieren</h1>
-<p>Wir verwenden Python Version 3.13. Falls nicht vorhanden:</p>
-<p>Download:</p>
-<p><a href="https://www.python.org/downloads/">Python</a></p>
-<p>Installiere Python 3.13.</p>
-<h2 id="wichtig-für-windows-python-zum-path-hinzufügen">⚠️ Wichtig für
-Windows: Python zum PATH hinzufügen</h2>
-<p>Beim Start des Python-Installers erscheint das erste
-Installationsfenster.</p>
-<p>Unten im Fenster befindet sich eine Checkbox:</p>
-<pre><code>☑ Add python.exe to PATH</code></pre>
-<p>Diese Checkbox <strong>muss aktiviert werden</strong>, bevor du die
-Installation startest.</p>
-<p>Danach kannst du auf:</p>
-<pre><code>Install Now</code></pre>
-<p>klicken.</p>
-<hr />
-<h3 id="warum-ist-das-wichtig">Warum ist das wichtig?</h3>
-<p>Die PATH-Einstellung ermöglicht es Windows, Python über das Terminal
-zu finden.</p>
-<p>Ohne diese Einstellung funktioniert später beispielsweise:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code></pre></div>
-<p>nicht.</p>
-<hr />
-<h3 id="falls-du-die-option-vergessen-hast">Falls du die Option
-vergessen hast</h3>
-<p>Keine Panik.</p>
-<p>Du kannst Python erneut installieren:</p>
-<ol type="1">
-<li>Öffne den Python Installer erneut</li>
-<li>Wähle:</li>
-</ol>
-<pre><code>Modify</code></pre>
-<p>oder:</p>
-<pre><code>Repair</code></pre>
-<ol start="3" type="1">
-<li>Aktiviere:</li>
-</ol>
-<pre><code>Add python.exe to PATH</code></pre>
-<ol start="4" type="1">
-<li>Schließe die Installation ab</li>
-</ol>
-<h2 id="python-testen">Python testen</h2>
-<p>Öffne ein neues Terminal und gib ein:</p>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code></pre></div>
-<p>Erwartete Ausgabe:</p>
-<pre><code>Python 3.13.x</code></pre>
-<p>Wenn diese Ausgabe erscheint, ist Python korrekt installiert.</p>
-<hr />
-<h1 id="schritt-4---uv-installieren">Schritt 4 - uv installieren</h1>
+<h1 id="schritt-3---uv-installieren">Schritt 3 - uv installieren</h1>
 <p><code>uv</code> verwaltet die komplette Python-Umgebung für diesen
 Kurs.</p>
 <p>Es:</p>
@@ -377,26 +327,26 @@ Kurs.</p>
 <hr />
 <h2 id="windows-1">Windows</h2>
 <p>Öffne PowerShell:</p>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>winget install <span class="op">--</span>id<span class="op">=</span>astral<span class="op">-</span>sh<span class="op">.</span><span class="fu">uv</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>winget install <span class="op">--</span>id<span class="op">=</span>astral<span class="op">-</span>sh<span class="op">.</span><span class="fu">uv</span></span></code></pre></div>
 <hr />
 <h2 id="macos-und-linux">macOS und Linux</h2>
 <p>Öffne ein Terminal:</p>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div>
 <p>Falls unter Linux <code>curl</code> fehlt:</p>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install curl <span class="at">-y</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install curl <span class="at">-y</span></span></code></pre></div>
 <hr />
 <p>Schließe danach das Terminal vollständig und öffne ein neues
 Terminal.</p>
 <p>Teste:</p>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code></pre></div>
 <p>Beispiel:</p>
 <pre><code>uv 0.x.x</code></pre>
 <hr />
-<h1 id="schritt-5---vs-code-erweiterungen-installieren">Schritt 5 - VS
+<h1 id="schritt-4---vs-code-erweiterungen-installieren">Schritt 4 - VS
 Code Erweiterungen installieren</h1>
 <p>Öffne VS Code.</p>
 <p>Klicke links auf das Symbol “Extensions”:</p>
@@ -405,7 +355,6 @@ Code Erweiterungen installieren</h1>
 <figcaption aria-hidden="true">Extensions</figcaption>
 </figure>
 <p>Installiere die folgenden Erweiterungen:</p>
-<p>Installiere mindestens die beiden Pflicht-Erweiterungen:</p>
 <table>
 <colgroup>
 <col style="width: 25%" />
@@ -451,22 +400,26 @@ Python-Code</td>
 </tbody>
 </table>
 <hr />
-<h1 id="schritt-6---kursmaterialien-herunterladen">Schritt 6 -
+<h1 id="schritt-5---kursmaterialien-herunterladen">Schritt 5 -
 Kursmaterialien herunterladen</h1>
 <p>Öffne ein Terminal.</p>
 <p>Wechsle an den Ort, an dem du den Kurs speichern möchtest.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Documents</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Documents</span></code></pre></div>
 <p>Lade das Repository herunter:</p>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/MarcoMernberger/human-biology-python.git</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/MarcoMernberger/data_science_human_biology.git</span></code></pre></div>
 <p>Wechsle in den Kursordner:</p>
-<div class="sourceCode" id="cb21"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> human-biology-python</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data_science_human_biology</span></code></pre></div>
 <p>Prüfe den Inhalt:</p>
-<div class="sourceCode" id="cb22"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<p>Linux oder macOS:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span></code></pre></div>
+<p>Windows:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span></span></code></pre></div>
 <p>Du solltest unter anderem sehen:</p>
 <pre><code>README.md
 pyproject.toml
@@ -474,11 +427,11 @@ uv.lock
 notebooks
 data</code></pre>
 <hr />
-<h1 id="schritt-7---python-umgebung-erstellen">Schritt 7 -
+<h1 id="schritt-6---python-umgebung-erstellen">Schritt 6 -
 Python-Umgebung erstellen</h1>
 <p>Im Kursordner führst du aus:</p>
-<div class="sourceCode" id="cb24"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div>
 <p>Dieser Befehl:</p>
 <ul>
 <li>erstellt eine eigene Python-Umgebung</li>
@@ -491,11 +444,11 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href=
 <p>Dieser Ordner enthält deine Kursumgebung.</p>
 <p>Bitte lösche oder verändere diesen Ordner nicht.</p>
 <hr />
-<h1 id="schritt-8---kurs-in-vs-code-öffnen">Schritt 8 - Kurs in VS Code
+<h1 id="schritt-7---kurs-in-vs-code-öffnen">Schritt 7 - Kurs in VS Code
 öffnen</h1>
 <p>Im Terminal:</p>
-<div class="sourceCode" id="cb26"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> .</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> .</span></code></pre></div>
 <p>Alternativ:</p>
 <ol type="1">
 <li>Öffne VS Code</li>
@@ -505,9 +458,9 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href=
 <ol start="3" type="1">
 <li>Wähle:</li>
 </ol>
-<pre><code>human-biology-python</code></pre>
+<pre><code>data_science_human_biology</code></pre>
 <hr />
-<h1 id="schritt-9---python-umgebung-in-vs-code-auswählen">Schritt 9 -
+<h1 id="schritt-8---python-umgebung-in-vs-code-auswählen">Schritt 8 -
 Python-Umgebung in VS Code auswählen</h1>
 <p>VS Code muss wissen, welche Python-Version verwendet werden soll.</p>
 <p>Drücke:</p>
@@ -518,9 +471,35 @@ Python-Umgebung in VS Code auswählen</h1>
 <p>Suche:</p>
 <pre><code>Python: Select Interpreter</code></pre>
 <p>Wähle:</p>
-<pre><code>Python 3.13 (.venv)</code></pre>
+<pre><code>Python 3.13 (`.venv`)</code></pre>
 <p>bzw. den Interpreter aus dem Ordner:</p>
 <pre><code>.venv</code></pre>
+<figure>
+<img src="assets/select_interpreter.svg"
+alt="Select Python Interpreter" />
+<figcaption aria-hidden="true">Select Python Interpreter</figcaption>
+</figure>
+<hr />
+<h1 id="schritt-9---jupyter-lab-testen">Schritt 9 - Jupyter lab
+testen</h1>
+<p>VScode kann je nach Menge der installierten Extensions und Resourcen
+euren Rechner ganz gut auslasten.</p>
+<p>Falls VS Code auf deinem Rechner langsam läuft, kann der Kurs auch
+direkt mit JupyterLab bearbeitet werden.</p>
+<p>JupyterLab läuft im Webbrowser und benötigt weniger Ressourcen als
+eine vollständige Entwicklungsumgebung.</p>
+<h2 id="jupyterlab-starten">JupyterLab starten</h2>
+<p>Öffne ein Terminal im Kursordner:</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run jupyter lab</span></code></pre></div>
+<p>Es öffnet sich automatisch ein Browserfenster mit JupyterLab.</p>
+<p>Falls kein Browser automatisch startet, kopiere die angezeigte URL in
+den Browser.</p>
+<p>Beispiel:</p>
+<p><a href="http://localhost:8888/lab">http://localhost:8888/lab</a></p>
+<h2 id="jupyterlab-beenden">JupyterLab beenden</h2>
+<p>Im Terminal:</p>
+<p><code>Ctrl + C</code></p>
 <hr />
 <h1 id="schritt-10---installation-testen">Schritt 10 - Installation
 testen</h1>
@@ -528,7 +507,11 @@ testen</h1>
 <pre><code>notebooks/00_setup_test.ipynb</code></pre>
 <p>Oben rechts im Notebook:</p>
 <p>Wähle den Kernel:</p>
-<pre><code>Python (.venv)</code></pre>
+<pre><code>Python (`.venv`)</code></pre>
+<figure>
+<img src="assets/select_kernel.svg" alt="Select Kernel" />
+<figcaption aria-hidden="true">Select Kernel</figcaption>
+</figure>
 <p>Klicke anschließend:</p>
 <pre><code>Run All</code></pre>
 <p>Das Notebook sollte ohne Fehlermeldungen durchlaufen.</p>
@@ -546,27 +529,44 @@ muss sichtbar sein.</p>
 <hr />
 <h1 id="kursmaterialien-aktualisieren">Kursmaterialien
 aktualisieren</h1>
-<p>Wenn neue Materialien bereitgestellt werden:</p>
+<p>Wenn neue oder aktualisierte Materialien bereitgestellt werden
+sollten:</p>
 <p>Öffne ein Terminal im Kursordner und führe aus:</p>
-<div class="sourceCode" id="cb38"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div>
 <hr />
 <h1 id="python-pakete-aktualisieren">Python-Pakete aktualisieren</h1>
-<p>Falls der Dozent dazu auffordert:</p>
-<div class="sourceCode" id="cb39"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div>
+<p>Die Kursumgebung wird zentral über <code>pyproject.toml</code> und
+<code>uv.lock</code> verwaltet.</p>
+<p>Falls neue Python-Pakete zum Kurs hinzugefügt werden, werden diese
+über das Kursrepository bereitgestellt.</p>
+<p>Nach einer Aktualisierung der Kursmaterialien:</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div>
+<h1 id="eigene-python-pakete-hinzufügen">Eigene Python-Pakete
+hinzufügen</h1>
+<p>Solltet ihr später eigene Pakete installieren wollen, geht das
+über:</p>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="op">&lt;</span>package<span class="op">&gt;</span></span></code></pre></div>
+<p>Dadurch werden automatisch pyproject.toml und uv.lock
+aktualisiert.</p>
+<p>Wenn ihr ein eigenes Projekt entwickelt und es mit anderen teilen
+möchtet, müssen beide Dateien mitgegeben werden:</p>
+<pre><code>pyproject.toml
+uv.lock</code></pre>
 <hr />
 <h1 id="wichtige-regeln">Wichtige Regeln</h1>
-<h2 id="keine-pakete-selbst-installieren">Keine Pakete selbst
-installieren</h2>
+<h2 id="keine-pakete-selbst-auf-anderem-weg-installieren">Keine Pakete
+selbst auf anderem Weg installieren!</h2>
 <p>Bitte nicht verwenden:</p>
-<div class="sourceCode" id="cb40"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install paketname</span></code></pre></div>
-<p>Die Kursumgebung wird automatisch über:</p>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="op">&lt;</span>paketname<span class="op">&gt;</span></span></code></pre></div>
+<p>Die Kursumgebung wird automatisch über diese Dateien verwaltet:</p>
 <pre><code>pyproject.toml</code></pre>
 <p>und</p>
 <pre><code>uv.lock</code></pre>
-<p>verwaltet.</p>
 <p>Manuelle Installationen können zu Problemen führen.</p>
 <hr />
 <h2 id="den-ordner-.venv-nicht-löschen">Den Ordner .venv nicht
@@ -576,19 +576,6 @@ löschen</h2>
 <p>enthält deine persönliche Python-Umgebung für diesen Kurs.</p>
 <hr />
 <h1 id="fehlerbehebung">Fehlerbehebung</h1>
-<h2 id="problem-python-wird-nicht-gefunden">Problem: Python wird nicht
-gefunden</h2>
-<p>Teste:</p>
-<div class="sourceCode" id="cb44"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code></pre></div>
-<p>Falls dies nicht funktioniert:</p>
-<ul>
-<li>Terminal schließen und neu öffnen</li>
-<li>Computer neu starten</li>
-<li>Python erneut installieren</li>
-<li>unter Windows prüfen, ob “Add Python to PATH” aktiviert wurde</li>
-</ul>
-<hr />
 <h2 id="problem-vs-code-findet-python-nicht">Problem: VS Code findet
 Python nicht</h2>
 <p>Öffne die Befehlspalette:</p>
@@ -604,8 +591,8 @@ Python nicht</h2>
 <h2 id="problem-etwas-funktioniert-nicht">Problem: Etwas funktioniert
 nicht</h2>
 <p>Versuche zuerst:</p>
-<div class="sourceCode" id="cb49"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div>
 <p>und starte VS Code neu.</p>
 <p>Falls das Problem weiterhin besteht, notiere:</p>
 <ol type="1">
@@ -622,15 +609,15 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href=
 <h1 id="checkliste-vor-beginn-des-praktikums">Checkliste vor Beginn des
 Praktikums</h1>
 <p>Vor dem Praktikum sollte alles Folgende erledigt sein:</p>
-<p>☑ VS Code installiert<br />
-☑ Git installiert<br />
-☑ Python 3.13 installiert<br />
-☑ uv installiert<br />
-☑ Python VS Code Extension installiert<br />
-☑ Jupyter VS Code Extension installiert<br />
-☑ Kursrepository heruntergeladen<br />
-☑ <code>uv sync</code> erfolgreich ausgeführt<br />
-☑ Test-Notebook erfolgreich ausgeführt</p>
+<p>☑ VS Code installiert</p>
+<p>☑ Git installiert</p>
+<p>☑ uv installiert</p>
+<p>☑ Python VS Code Extension installiert</p>
+<p>☑ Jupyter VS Code Extension installiert</p>
+<p>☑ Kursrepository heruntergeladen</p>
+<p>☑ <code>uv sync</code> erfolgreich ausgeführt</p>
+<p>☑ VS Code und jupyter lab einmal gestartet</p>
+<p>☑ Test-Notebook erfolgreich ausgeführt</p>
 <p>Du bist jetzt bereit für den Kurs!</p>
 </body>
 </html>

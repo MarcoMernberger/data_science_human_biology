@@ -1,6 +1,6 @@
 # Data Science in der Humanbiologie - Python Data Science Kurs
 
-Willkommen zum Python Kurs Data Science in der Humanbiologie.
+Willkommen zum Python Kurs **Data Science in der Humanbiologie**.
 
 In diesem Kurs verwenden wir Python, um biologische Daten zu analysieren, zu visualisieren und wissenschaftlich auszuwerten.
 
@@ -29,10 +29,14 @@ GitHub Repository
 Visual Studio Code
         |
         ↓
-Python Umgebung (.venv)
+Python Umgebung (`.venv`)
         |
         ↓
-Jupyter Notebook
++----------------+
+|                |
+VS Code      JupyterLab
+|                |
++----------------+
         |
         ↓
 Datenanalyse
@@ -47,7 +51,6 @@ Du benötigst:
 
 ☑ Computer mit Windows, macOS oder Linux
 ☑ Internetverbindung
-☑ GitHub-Account (für den Zugriff auf die Kursmaterialien)
 
 Installiert werden:
 
@@ -58,7 +61,7 @@ Installiert werden:
 
 Die Python-Version und alle Python-Pakete werden automatisch durch `uv` verwaltet.
 
-
+---
 
 # Schritt 1 - Visual Studio Code installieren
 
@@ -76,7 +79,7 @@ Installiere VS Code mit den Standardeinstellungen.
 
 Git benötigen wir, um die Kursmaterialien herunterzuladen und später zu aktualisieren.
 
-Download:
+Lade Git herunter:
 
 [Git](https://git-scm.com/downloads)
 
@@ -124,99 +127,7 @@ Wenn eine Versionsnummer erscheint, ist Git erfolgreich installiert.
 
 ---
 
-# Schritt 3 - Python installieren
-
-Wir verwenden Python Version 3.13. Falls nicht vorhanden:
-
-Download:
-
-[Python](https://www.python.org/downloads/)
-
-Installiere Python 3.13.
-
-## ⚠️ Wichtig für Windows: Python zum PATH hinzufügen
-
-Beim Start des Python-Installers erscheint das erste Installationsfenster.
-
-Unten im Fenster befindet sich eine Checkbox:
-
-```
-☑ Add python.exe to PATH
-```
-
-Diese Checkbox **muss aktiviert werden**, bevor du die Installation startest.
-
-Danach kannst du auf:
-
-```
-Install Now
-```
-
-klicken.
-
----
-
-### Warum ist das wichtig?
-
-Die PATH-Einstellung ermöglicht es Windows, Python über das Terminal zu finden.
-
-Ohne diese Einstellung funktioniert später beispielsweise:
-
-```bash
-python --version
-```
-
-nicht.
-
----
-
-### Falls du die Option vergessen hast
-
-Keine Panik.
-
-Du kannst Python erneut installieren:
-
-1. Öffne den Python Installer erneut
-2. Wähle:
-
-```
-Modify
-```
-
-oder:
-
-```
-Repair
-```
-
-3. Aktiviere:
-
-```
-Add python.exe to PATH
-```
-
-4. Schließe die Installation ab
-
-
-## Python testen
-
-Öffne ein neues Terminal und gib ein:
-
-```bash
-python --version
-```
-
-Erwartete Ausgabe:
-
-```
-Python 3.13.x
-```
-
-Wenn diese Ausgabe erscheint, ist Python korrekt installiert.
-
----
-
-# Schritt 4 - uv installieren
+# Schritt 3 - uv installieren
 
 `uv` verwaltet die komplette Python-Umgebung für diesen Kurs.
 
@@ -271,13 +182,11 @@ uv 0.x.x
 
 ---
 
-
-# Schritt 5 - VS Code Erweiterungen installieren
+# Schritt 4 - VS Code Erweiterungen installieren
 
 Öffne VS Code.
 
 Klicke links auf das Symbol "Extensions":
-
 
 ![Extensions](assets/extensions.svg)
 
@@ -294,7 +203,7 @@ Installiere die folgenden Erweiterungen:
 ---
 
 
-# Schritt 6 - Kursmaterialien herunterladen
+# Schritt 5 - Kursmaterialien herunterladen
 
 Öffne ein Terminal.
 
@@ -309,19 +218,27 @@ cd Documents
 Lade das Repository herunter:
 
 ```bash
-git clone https://github.com/MarcoMernberger/human-biology-python.git
+git clone https://github.com/MarcoMernberger/data_science_human_biology.git
 ```
 
 Wechsle in den Kursordner:
 
 ```bash
-cd human-biology-python
+cd data_science_human_biology
 ```
 
 Prüfe den Inhalt:
 
+Linux oder macOS:
+
 ```bash
-ls
+ls -al
+```
+
+Windows:
+
+```powershell
+dir
 ```
 
 Du solltest unter anderem sehen:
@@ -337,7 +254,7 @@ data
 ---
 
 
-# Schritt 7 - Python-Umgebung erstellen
+# Schritt 6 - Python-Umgebung erstellen
 
 Im Kursordner führst du aus:
 
@@ -365,7 +282,7 @@ Bitte lösche oder verändere diesen Ordner nicht.
 
 ---
 
-# Schritt 8 - Kurs in VS Code öffnen
+# Schritt 7 - Kurs in VS Code öffnen
 
 Im Terminal:
 
@@ -385,12 +302,12 @@ Datei → Ordner öffnen
 3. Wähle:
 
 ```
-human-biology-python
+data_science_human_biology
 ```
 
 ---
 
-# Schritt 9 - Python-Umgebung in VS Code auswählen
+# Schritt 8 - Python-Umgebung in VS Code auswählen
 
 VS Code muss wissen, welche Python-Version verwendet werden soll.
 
@@ -417,7 +334,7 @@ Python: Select Interpreter
 Wähle:
 
 ```
-Python 3.13 (.venv)
+Python 3.13 (`.venv`)
 ```
 
 bzw. den Interpreter aus dem Ordner:
@@ -426,7 +343,43 @@ bzw. den Interpreter aus dem Ordner:
 .venv
 ```
 
+![Select Python Interpreter](assets/select_interpreter.svg)
+
 ---
+
+# Schritt 9 - Jupyter lab testen
+
+VScode kann je nach Menge der installierten Extensions und Resourcen euren Rechner ganz gut auslasten. 
+
+Falls VS Code auf deinem Rechner langsam läuft, kann der Kurs auch direkt mit JupyterLab bearbeitet werden.
+
+JupyterLab läuft im Webbrowser und benötigt weniger Ressourcen als eine vollständige Entwicklungsumgebung.
+
+
+## JupyterLab starten
+
+Öffne ein Terminal im Kursordner:
+
+```bash
+uv run jupyter lab
+```
+
+Es öffnet sich automatisch ein Browserfenster mit JupyterLab.
+
+Falls kein Browser automatisch startet, kopiere die angezeigte URL in den Browser.
+
+Beispiel:
+
+[http://localhost:8888/lab](http://localhost:8888/lab)
+
+## JupyterLab beenden
+
+Im Terminal:
+
+`Ctrl + C`
+
+---
+
 
 # Schritt 10 - Installation testen
 
@@ -441,8 +394,11 @@ Oben rechts im Notebook:
 Wähle den Kernel:
 
 ```
-Python (.venv)
+Python (`.venv`)
 ```
+
+![Select Kernel](assets/select_kernel.svg)
+
 
 Klicke anschließend:
 
@@ -459,6 +415,7 @@ Wenn du die Grafik siehst:
 🎉 Deine Python-Umgebung ist erfolgreich eingerichtet.
 
 ---
+
 
 # Arbeiten während des Kurses
 
@@ -478,7 +435,7 @@ Code wird über die ▶-Schaltfläche ausgeführt.
 
 # Kursmaterialien aktualisieren
 
-Wenn neue Materialien bereitgestellt werden:
+Wenn neue oder aktualisierte Materialien bereitgestellt werden sollten:
 
 Öffne ein Terminal im Kursordner und führe aus:
 
@@ -490,25 +447,47 @@ git pull
 
 # Python-Pakete aktualisieren
 
-Falls der Dozent dazu auffordert:
+Die Kursumgebung wird zentral über `pyproject.toml` und `uv.lock` verwaltet.
+
+Falls neue Python-Pakete zum Kurs hinzugefügt werden, werden diese über das Kursrepository bereitgestellt.
+
+Nach einer Aktualisierung der Kursmaterialien:
 
 ```bash
+git pull
 uv sync
+```
+
+# Eigene Python-Pakete hinzufügen
+
+Solltet ihr später eigene Pakete installieren wollen, geht das über:
+
+```bash
+uv add <package>
+```
+
+Dadurch werden automatisch pyproject.toml und uv.lock aktualisiert.
+
+Wenn ihr ein eigenes Projekt entwickelt und es mit anderen teilen möchtet, müssen beide Dateien mitgegeben werden:
+
+```
+pyproject.toml
+uv.lock
 ```
 
 ---
 
 # Wichtige Regeln
 
-## Keine Pakete selbst installieren
+## Keine Pakete selbst auf anderem Weg installieren!
 
 Bitte nicht verwenden:
 
 ```bash
-pip install paketname
+pip install <paketname>
 ```
 
-Die Kursumgebung wird automatisch über:
+Die Kursumgebung wird automatisch über diese Dateien verwaltet:
 
 ```
 pyproject.toml
@@ -519,8 +498,6 @@ und
 ```
 uv.lock
 ```
-
-verwaltet.
 
 Manuelle Installationen können zu Problemen führen.
 
@@ -539,23 +516,6 @@ enthält deine persönliche Python-Umgebung für diesen Kurs.
 ---
 
 # Fehlerbehebung
-
-## Problem: Python wird nicht gefunden
-
-Teste:
-
-```bash
-python --version
-```
-
-Falls dies nicht funktioniert:
-
-- Terminal schließen und neu öffnen
-- Computer neu starten
-- Python erneut installieren
-- unter Windows prüfen, ob "Add Python to PATH" aktiviert wurde
-
----
 
 ## Problem: VS Code findet Python nicht
 
@@ -615,13 +575,21 @@ Falls das Problem weiterhin besteht, notiere:
 Vor dem Praktikum sollte alles Folgende erledigt sein:
 
 ☑ VS Code installiert  
+
 ☑ Git installiert  
-☑ Python 3.13 installiert  
+
 ☑ uv installiert  
+
 ☑ Python VS Code Extension installiert  
+
 ☑ Jupyter VS Code Extension installiert  
+
 ☑ Kursrepository heruntergeladen  
+
 ☑ `uv sync` erfolgreich ausgeführt  
+
+☑ VS Code und jupyter lab einmal gestartet
+
 ☑ Test-Notebook erfolgreich ausgeführt  
 
 Du bist jetzt bereit für den Kurs!
