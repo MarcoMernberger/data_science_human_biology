@@ -29,7 +29,7 @@ GitHub Repository
 Visual Studio Code
         |
         ↓
-Python Umgebung (`.venv`)
+Python environment (`.venv`)
         |
         ↓
 +----------------+
@@ -39,7 +39,7 @@ VS Code      JupyterLab
 +----------------+
         |
         ↓
-Datenanalyse
+Data analysis
 ```
 
 ---
@@ -50,7 +50,7 @@ Datenanalyse
 You need:
 
 ☑ Computer running Windows, macOS, or Linux  
-☑ Internet connection  
+☑ Internet connection (for the installation; the course notebooks themselves work offline)
 
 The following software will be installed:
 
@@ -85,6 +85,12 @@ Download Git:
 
 Install Git using the default settings.
 
+On Linux you can also install Git with your package manager, for example on Ubuntu or Debian:
+
+```bash
+sudo apt install git -y
+```
+
 ---
 
 ## Test Git installation
@@ -109,9 +115,9 @@ Applications → Utilities → Terminal
 
 ### Linux
 
-Öffne dein Terminal.
+Open your terminal.
 
-Gib ein:
+Enter:
 
 ```bash
 git --version
@@ -137,20 +143,26 @@ It:
 * creates an isolated environment
 * installs all required packages
 * ensures that all students use the same environment
-  
+
 ---
 
 ## Windows
 
-Open PowerShell:
+Open PowerShell and run:
 
 ```powershell
-winget install --id=astral-sh.uv
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+If this does not work, you can try `winget` instead:
+
+```powershell
+winget install --id=astral-sh.uv -e
 ```
 
 ---
 
-## macOS und Linux
+## macOS and Linux
 
 Open a terminal:
 
@@ -158,7 +170,7 @@ Open a terminal:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-If `curl` is missing on Linux:
+If `curl` is missing on Linux (Ubuntu or Debian):
 
 ```bash
 sudo apt install curl -y
@@ -174,7 +186,7 @@ Test the installation:
 uv --version
 ```
 
-Beispiel:
+Example:
 
 ```
 uv 0.x.x
@@ -195,10 +207,10 @@ Install the following extensions:
 
 | Extension | Publisher | Extension ID (Search for) | Purpose |
 |---|---|---|---|
-| Python | Microsoft | `ms-python.python` | Python-Unterstützung, Interpreter auswählen, Ausführen von Python-Code |
-| Jupyter | Microsoft | `ms-toolsai.jupyter` | Öffnen und Ausführen von Jupyter Notebooks (`.ipynb`) |
-| Data Wrangler | Microsoft | `ms-toolsai.datawrangler` | Interaktive Untersuchung und Aufbereitung von Datensätzen |
-| Ruff | Astral Software | `charliermarsh.ruff` | Automatische Code-Analyse und Formatierung |
+| Python | Microsoft | `ms-python.python` | Python support, selecting the interpreter, running Python code |
+| Jupyter | Microsoft | `ms-toolsai.jupyter` | Opening and running Jupyter notebooks (`.ipynb`) |
+| Data Wrangler | Microsoft | `ms-toolsai.datawrangler` | Interactive exploration and preparation of datasets |
+| Ruff | Astral Software | `charliermarsh.ruff` | Automatic code analysis and formatting |
 
 ---
 
@@ -249,6 +261,8 @@ pyproject.toml
 uv.lock
 notebooks
 data
+assets
+outputs
 ```
 
 ---
@@ -331,17 +345,19 @@ Search for:
 Python: Select Interpreter
 ```
 
-Select:
+Select the entry that belongs to the `.venv` folder of the course, for example:
 
 ```
-Python 3.13 (`.venv`)
+Python 3.12.x (.venv)
 ```
 
-or the interpreter located inside:
+or
 
 ```
-.venv
+Python 3.13.x (.venv)
 ```
+
+The exact version number does not matter, as long as `.venv` is part of the entry.
 
 ![Select Python Interpreter](assets/select_interpreter.svg)
 
@@ -372,6 +388,8 @@ Example:
 
 [http://localhost:8888/lab](http://localhost:8888/lab)
 
+In JupyterLab, the kernel `Python 3 (ipykernel)` is the correct one, because JupyterLab was started with `uv run`.
+
 ## Stop JupyterLab
 
 In the terminal press:
@@ -389,12 +407,10 @@ Open:
 notebooks/00_setup_test.ipynb
 ```
 
-In the upper right corner of the notebook:
-
-Select the kernel:
+In VS Code, click "Select Kernel" in the upper right corner of the notebook and select the entry that belongs to `.venv`:
 
 ```
-Python (`.venv`)
+Python Environments... → Python 3.x.x (.venv)
 ```
 
 ![Select Kernel](assets/select_kernel.svg)
@@ -408,7 +424,7 @@ Run All
 
 The notebook should run without errors.
 
-At the end, a green success message should appear and the test plot should be visible.
+At the end, a success message should appear and the test plot should be visible.
 
 If you can see the plot:
 
@@ -419,17 +435,45 @@ If you can see the plot:
 
 # Working During the Course
 
-# Opening notebooks
+## Opening notebooks
 
-The course exercises are provided as files with the extension:
+The course notebooks are provided as files with the extension:
 
 ```
 .ipynb
 ```
 
-These files can be opened directly in VS Code.
+These files can be opened directly in VS Code or in JupyterLab.
 
 Code can be executed using the ▶ button.
+
+## Work in your own copy
+
+Please do **not** work directly in the folder `notebooks`. Otherwise your changes can collide with updates of the course material (see "Updating Course Materials" below).
+
+Instead, copy the folder of the day to the folder `my_work` and work there. For example for day 1:
+
+Linux or macOS:
+
+```bash
+mkdir -p my_work
+cp -r notebooks/day01 my_work/
+```
+
+Windows (PowerShell):
+
+```powershell
+New-Item -ItemType Directory -Force my_work
+Copy-Item -Recurse notebooks\day01 my_work\
+```
+
+You can also copy and paste the folder in the VS Code file explorer.
+
+Important:
+
+- Keep the folder structure: `my_work/day01`, not `my_work` directly. The notebooks load their data using relative paths (`../../data/...`), which only work at this depth.
+- The folder `my_work` is ignored by Git. Your own work is never changed or deleted by updates.
+- Do the same with the folder `notebooks/practice`, if you want to work on the practice exercises.
 
 ---
 
@@ -447,7 +491,7 @@ git pull
 
 # Updating Python Packages
 
-The course environment is centrally managed using pyproject.toml and uv.lock.
+The course environment is centrally managed using `pyproject.toml` and `uv.lock`.
 
 If new Python packages are added to the course, they will be provided through the course repository.
 
@@ -460,15 +504,19 @@ uv sync
 
 # Adding Your Own Python Packages
 
-If you later want to install additional packages, use:
+During the course, please do not add packages yourself. All students must have exactly the same environment.
+
+If you want to use additional packages later for your own projects, create a separate project folder outside the course folder and use `uv` there:
 
 ```bash
+uv init my_project
+cd my_project
 uv add <package>
 ```
 
-This automatically updates pyproject.toml und uv.lock.
+`uv add` automatically updates `pyproject.toml` and `uv.lock` of that project.
 
-If you develop your own project and want to share it with others, both files must be included:
+If you share your own project with others, both files must be included:
 
 ```
 pyproject.toml
@@ -533,16 +581,33 @@ macOS:
 Cmd + Shift + P
 ```
 
-SSelect:
+Select:
 
 ```
 Python: Select Interpreter
 ```
 
-and choose:
+and choose the entry that belongs to:
 
 ```
 .venv
+```
+
+---
+
+## Problem: A notebook cannot find a data file (`FileNotFoundError`)
+
+The notebooks load their data using relative paths. Check that your copy is located at the correct depth, for example `my_work/day01/` and not directly in `my_work/`.
+
+---
+
+## Problem: `git pull` reports "Your local changes would be overwritten"
+
+You have changed a file in the folder `notebooks`. Copy your changed notebook into your folder `my_work` first (see "Work in your own copy"). Then run:
+
+```bash
+git restore notebooks
+git pull
 ```
 
 ---
@@ -555,7 +620,7 @@ Try first:
 uv sync
 ```
 
-uand restart VS Code.
+and restart VS Code.
 
 If the problem persists, note:
 

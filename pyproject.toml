@@ -27,7 +27,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest~=8.4",
-    "ruff~=0.12",
+    "ruff~=0.17",
     "markdown~=3.8",
     "nbformat~=5.10",
 ]
@@ -54,9 +54,16 @@ ignore = [
     "FIX002", # allow TODOs
     "INP001", # no need for __init__.py everywhere
     "PD010", # pivot is used with polars; false positive
-    "PD901", # `df` is a bad variable name. Be kinder to your future self. <- it's a great name
     "PLR2004", # allow magic values for educational purposes
     "PTH", # for now we skip this rule which enforces the use of pathlib
     "T201", # allow print statements
     "TD003", # allow TODOs without issue link
+    "CPY001", # no copyright notice needed
 ]
+
+[tool.ruff.lint.per-file-ignores]
+# teaching code: relaxed rules (legacy np.random stays flagged on purpose, we teach np.random.default_rng)
+"src/**"       = ["S101", "S311", "EM101", "TRY003", "FBT002", "FBT003", "ARG001", "PERF401"]
+"notebooks/**" = ["ALL"]  # students' editors read this file too
+"my_work/**"   = ["ALL"]
+"scripts/**"   = ["S603", "S607"]  # the check script starts jupytext/nbconvert as subprocesses
