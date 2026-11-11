@@ -145,7 +145,7 @@ Requirements:
 
 Beginners work at very different speeds. Therefore every hands-on notebook also contains:
 
-- **2 optional stretch exercises** (clearly marked as optional and harder) for fast students.
+- **at least 4 optional stretch exercises** (clearly marked as optional. They may be exploring more topics or simply be harder to solve (mark these as "hard")) for fast students.
 - **Tiered hints** for the exercises, collapsed by default: hint 1 points to the relevant concept, hint 2 shows the approach. The full solution stays in the knowledge section.
 - **A fallback for every AI challenge**: a saved example answer of an AI tool (clearly labelled as an example), so that students can continue if their free tool is unavailable, rate-limited or not working.
 
@@ -217,7 +217,7 @@ Code the students wrote themselves needs no mark.
 - **Students log their prompts** (copy and paste, verbatim). Prompt quality is a learning goal, and the examiner must be able to see what was asked. Full AI answers do not have to be logged, only what was taken from them.
 - Never paste real patient data or confidential research data into the prompt or the log (see data privacy, Block 01).
 - The log is built up gradually so it does not become a burden:
-  - Blocks 01–02: Task, Prompt, Result (accepted / modified / rejected).
+  - Blocks 01–02: Task, Tool, Prompt, Result (accepted / modified / rejected).
   - Blocks 03–06: additionally "How I checked it".
   - from Block 07 on and in the examination: the full table, including "What I changed and why".
 
@@ -258,11 +258,11 @@ Every topic in the block descriptions below is flagged **[core]** or **[optional
 
 ## Cross-cutting topics the syllabus must cover
 
-The block lists above do not mention the following topics, but later blocks and the learning goals depend on them. All of them are **core**, except git basics, which are optional. In the syllabus, the agent proposes in which block each one is introduced (and which block it takes time from), and I decide:
+The block lists above partly do not mention the following topics, but later blocks and the learning goals depend on them. All of them are **core**, except list comprehensions and git basics, which are optional. Where I have already decided the block, it is stated here. For the others, the agent proposes in the syllabus in which block each one is introduced (and which block it takes time from), and I decide:
 
-- `import`, modules and libraries (`import numpy as np`, installed packages versus the standard library). Needed before Block 05 at the latest, ideally earlier.
-- String handling: indexing and slicing, common string methods (`upper()`, `count()`, `replace()`), f-strings. Needed for the DNA sequence functions in Block 04.
-- List comprehensions (AI-generated code uses them constantly, and students must be able to read them).
+- `import`, modules and libraries. **Decided:** first contact in Block 02 with the standard-library `math` module (`math.log10`, `math.log2`, `math.sqrt`); the formal introduction (`import x as y`, `from x import y`, installed packages versus the standard library, library versions) is in Block 05. `import` is not introduced in Block 01.
+- String handling. **Decided:** f-strings and common string methods (`upper()`, `count()`, `replace()`) in Block 02; indexing and slicing (strings, lists, tuples) in Block 03; `split()` and `join()` in Block 04. All needed for the DNA sequence functions in Block 04.
+- **[optional]** List comprehensions (AI-generated code uses them constantly; they are mentioned in an optional section of Block 03 at reading level). No core exercise and no core content may depend on them.
 - More exception types beyond the first introduction (`KeyError`, `IndexError`, and later the errors typical for arrays and DataFrames). How to read an error message is fixed for Block 02 (see there). The agent proposes where the further exception types go.
 - Simple test cases with `assert` (a learning goal, but no block lists it).
 - Library versions: AI answers often use outdated idioms (for example older pandas or NumPy syntax). Students should learn to check the installed versions and the documentation.
@@ -319,12 +319,16 @@ Before the course starts, I meet the students and set up their computers. `READM
 - **[core]** What is Python? What is a programming language?
 - **[core]** Interpreters and scripts
 - **[core]** Jupyter Notebooks: kernels, cells, Markdown and code
-- **[core]** VS Code: interface, Python environment, Jupyter integration and file management
+- **[core]** VS Code: interface, Python environment, Jupyter integration and file management (keep it short)
+- **[core]** Jupyter command mode and edit mode: what they are, how to switch (`Esc`, `Enter`), and the few essential keys for running, adding and deleting cells
 - **[core]** Getting started: `print()`, comments and simple calculations
+- **[core]** Getting help: `?print` in Jupyter (the formal treatment of `help()` and docstrings is in Block 04)
+- **[core]** variables, assignment and literals: variables are needed here to demonstrate the execution order and the kernel state, and to solve small problems in the hands-on session
+- **[core]** naming variables, show two keywords and why they cannot be variable names, naming conventions
 - **[core]** reproducibility: what does it mean? why do analysis have to be repeatable at any time?
 - **[core]** jupyter notebooks, order of execution, why should we restart the kernel and rerun from time to time
 - **[core]** importance of documentation
-- **[optional]** Jupyter shortcuts and useful features (beyond running, adding and deleting cells, which are core)
+- **[optional]** Further useful shortcuts and features of Jupyter and VS Code (for example splitting and merging cells, multi-cursor, command palette). The hands-on session gives students the opportunity to try the essential core shortcuts, and points to the optional ones.
 - **[core]** Introduction to AI-assisted programming: What can ChatGPT do, and what are its limitations?
 - **[optional]** Markdown cheat sheet: headings, lists, emphasis, formulas
 - **[optional]** The Python ecosystem for biomedical data analysis (overview of libraries such as Biopython and scanpy)
@@ -334,24 +338,51 @@ Before the course starts, I meet the students and set up their computers. `READM
 - How do I formulate a good prompt? How can I ask AI to explain Python code? How can I generate code without blindly accepting it?
 - Data privacy: Why patient data and confidential research data should not be entered carelessly into public AI systems.
 
+**Time guide for the core content of the lecture** (the syllabus refines it and must stay within 90 minutes):
+
+| Part | Minutes |
+|---|---|
+| Tools: what is Python, Jupyter, VS Code, command and edit mode | 20–25 |
+| Variables and kernel state (execution order, restart and run all) | 20–25 |
+| Introduction to AI-assisted programming (incl. data privacy) | 25–30 |
+| Documentation and recap | about 10 |
+
+Block 01 is the most densely packed block of the first day. If the agent finds that it does not fit, it flags this as an overload (see "Major didactic rules") and proposes what to move.
+
+**Ideas for the hands-on session** (a pool, not a list to be worked off completely: the agent selects and adapts those that fit into 90 minutes, and proposes the selection in the syllabus. Shortcuts and command/edit mode must be used in at least one exercise):
+
+- *Growth by re-running:* store `cells = 1000` once and run `cells = cells * 2` several times. Students predict the result, run the cell twice by accident and discover state. In Block 03 the same problem becomes a loop.
+- *Bench calculator for tomorrow's experiment:* compute the mass of Nutlin-3a for a stock solution and the volumes for a dilution series, as a small reusable notebook. The agent marks the molecular weight and the concentrations it uses for my review.
+- *qPCR fold change:* compute `2 ** (ct_control - ct_sample)`. Students work out which sample expresses more, since a lower Ct means higher expression.
+- *Notebook detective:* a notebook with out-of-order execution counts and a stale variable. Students find out why two people got different results.
+- *Fix the lab notebook:* the cells are shuffled. Students restore the order and finish with a clean restart and run all.
+- *Prompt duel:* pairs write a good and a bad prompt for the same dilution task, using different AI tools, and compare the answers and the numbers. This shows how variable AI answers are.
+- *Explain this code:* give the AI a five-line snippet using unfamiliar syntax and ask it to explain it. Students change one value to test one of its claims.
+
 ### Block 02 – Variables, Data Types and Operators
 
 *Lecture 1.5 h + Hands-on 1.5 h*
 
 **Topics**
 
-- **[core]** Writing first Python instructions
-- **[core]** Defining variables and assigning values
+- **[core]** Recap of Block 01: variables and assignment, and the difference between variables and literals (no new topic: the formal introduction is in Block 01)
+- **[core]** Recap of reserved keywords and variable naming (the typical errors they cause)
 - **[core]** Integers, floats, strings and Booleans
 - **[core]** Exploring data types with `type()`
-- **[core]** Type conversion with `int()`, `float()` and `str()`
+- **[core]** Type conversion (often called casting) with `int()`, `float()` and `str()`
 - **[core]** Arithmetic and logical operators
 - **[core]** Comparison operators and Boolean expressions
+- **[core]** Order of precedence of arithmetic and logical operators (`not`, `and`, `or`). Rule: use parentheses when in doubt.
+- **[core]** Strings: f-strings and common string methods (`upper()`, `count()`, `replace()`). Indexing and slicing of strings are in Block 03.
+- **[core]** First contact with `import`: the standard-library `math` module (`math.log10`, `math.log2`, `math.sqrt`). Only the pattern `import math` is shown; the formal introduction of `import` (aliases, `from x import y`, libraries, versions) is in Block 05.
 - **[core]** Simple biological calculations (e.g. dilutions, concentrations and age calculations)
+- **[core]** Syntax Errors, Runtime Errors and Logical Errors
 - **[core]** Reading an error message: what a traceback shows (error type, message, line number), the typical beginner errors (`SyntaxError`, `NameError`, `TypeError`, `ValueError`) and how to fix them. Errors are normal and part of programming. This is a dedicated short section of the lecture and has its own hands-on exercise.
 - **[optional]** Floating-point precision: why `0.1 + 0.2` is not exactly `0.3`, and `round()`
-- **[optional]** Naming conventions for variables (PEP 8)
+- **[optional]** PEP 8 style conventions beyond the basic naming rules
 - **[optional]** Integer division and remainder (`//`, `%`)
+
+Because variables are now formally introduced in Block 01, the time freed in Block 02 is used for more practice (calculations, types, error messages), not for new topics.
 
 **AI task:** Students use AI to generate a small calculator for a biological problem, review the code and test it with their own values.
 
@@ -366,15 +397,22 @@ Before the course starts, I meet the students and set up their computers. `READM
 **Topics**
 
 - **[core]** Why do we need control structures?
-- **[core]** `if`, `elif`, `else`
+- **[core]** `if`, `elif`, `else` (conditional statements)
+- **[core]** Indentation and why it matters
 - **[core]** `for` loops
 - **[optional]** `while` loops
-- **[core]** `range()`
-- **[optional]** `enumerate()`, `break` and `continue`
+- **[core]** `len()` and `range()`
+- **[optional]** `break` and `continue`, `pass`
 - **[core]** Lists and tuples
+- **[core]** Indexing and slicing of lists, tuples and strings
+- **[core]** Unpacking of tuples (for example `gene, count = pair`)
+- **[optional]** `enumerate()`
 - **[core]** Dictionaries
+- **[core]** Modifying containers: adding, changing and deleting elements (`append()`, item assignment, `del`, `pop()`, dictionary `update()`)
 - **[optional]** Sets
 - **[core]** Iterables and iteration
+- **[core]** Trap: never reuse built-in names such as `list`, `sum` or `max` as variable names (the Block 01 naming rules do not prevent this)
+- **[optional]** List comprehensions (reading level only, because AI-generated code uses them constantly). No core exercise depends on them.
 - **[optional]** Nested data structures
 - **[optional]** Mutable and immutable objects: why `b = a` does not copy a list
 - **[optional]** Sorting with `sorted()` and `.sort()`
@@ -387,22 +425,25 @@ Before the course starts, I meet the students and set up their computers. `READM
 
 **Topics**
 
-- **[core]** Creating custom functions with `def`
-- **[core]** Parameters, arguments and return values
+- **[core]** Creating custom functions with `def`: the signature (name and parameters) and the body
+- **[core]** Parameters, arguments and return values (None)
 - **[core]** Default parameters and keyword arguments
 - **[core]** Local variables
 - **[core]** `help()` and docstrings
 - **[core]** touch upon object-orientation: what is an object, what is a class? what are attributes and methods? difference between class and instance. Students need to know that this exists and later use class methods and attributes with pandas and seaborn. but they do not need to implement themselves.
+- **[core]** Recognising try/except and raise in AI-generated code (3 minutes in the Block 04 AI corner, including why a bare except: pass hides errors)
+- **[core]** String methods `split()` and `join()`
 - **[core]** Writing small functions for sequence analysis:
   - **[core]** Determining the length of a DNA sequence
   - **[core]** Calculating GC content
   - **[core]** Counting specific nucleotides
   - **[optional]** Generating the reverse complement of a DNA sequence
-  - **[core]** Reading .fasta
+  - **[core]** Reading .fasta (this needs opening and reading a text file line by line, `with open(..., encoding="utf-8")`, `strip()` and `startswith()`: they belong to the core content of this block and into the concept index)
 - **[optional]** Lambda functions (you will meet them in AI-generated pandas code)
 - **[optional]** Type hints in function definitions (you will see them in AI-generated code)
+- **[optional]** Writing try/except and raise ValueError
 
-**AI task:** Develop a function to calculate GC content with the help of AI, test it and then extend it in a targeted way. Students should be able to explain what each line of code does.
+**AI task:** Develop a function to calculate GC content with the help of AI, test it and then extend it in a targeted way. Students should be able to explain what each line of code does. 
 
 ## Day 3 – Scientific Data Analysis with NumPy and Pandas
 
@@ -413,16 +454,18 @@ Before the course starts, I meet the students and set up their computers. `READM
 *Lecture 1.5 h + Hands-on 1.5 h*
 
 **Topics**
-
+- **[core]** Formal introduction of `import`: `import x as y`, `from x import y` (for example `from scipy import stats`), installed packages versus the standard library, and checking the installed library version (`__version__`). `import math` was shown in Block 02.
 - **[core]** Why NumPy? Differences between NumPy arrays and Python lists
 - **[core]** Arrays, vectors and matrices
 - **[core]** Dimensions, shape and data types
 - **[core]** Creating arrays: `np.array()`, `np.zeros()`, `np.ones()`, `np.arange()`
+- **[core]** `np.isinf()` (for example after taking the logarithm of zero counts)
+- **[core]** Sorting `np.sort()` and `np.argsort()`
 - **[core]** Indexing and slicing
 - **[core]** Boolean masking
 - **[core]** Element-wise calculations
 - **[core]** Raw counts vs. normalised/log-transformed expression 
-- **[optional]** Mention `np.linspace()` and broadcasting
+- **[optional]** Mention `np.linspace()`, `np.concatenate()` and broadcasting
 - **[core]** Statistical functions: mean, median and standard deviation
 - **[core]** Random numbers with a seeded generator (`rng = np.random.default_rng(42)`, then `rng.normal()`, `rng.integers()`, `rng.choice()`) and why a fixed seed makes results reproducible
 - **[optional]** The legacy interface `np.random.seed()` and the `random` module: you will meet them in older tutorials and in AI-generated code
@@ -431,7 +474,7 @@ Before the course starts, I meet the students and set up their computers. `READM
 
 **Biological context:** Gene expression data, experimental measurements and concentration series.
 
-**AI component:** Generate NumPy code with AI and use small examples to understand what arrays and broadcasting actually do.
+**AI component:** Generate NumPy code with AI and use small examples to understand what arrays and element-wise operations actually do (broadcasting is optional and must not be needed for the AI corner).
 
 ### Block 06 – Pandas: Working with Tables
 
@@ -440,7 +483,7 @@ Before the course starts, I meet the students and set up their computers. `READM
 **Topics**
 
 - **[core]** What is Pandas?
-- **[core]** Series and DataFrames
+- **[core]** Series and DataFrames, Index
 - **[core]** Reading CSV and TSV files (`read_csv`)
 - **[core]** handling different data formats (.csv, .tsv). Focus on dataframes. (Reading .fasta is covered in Block 04.)
 - **[optional]** also mention .json, .fastq, .bam and .vcf files conceptually (but we will not use them here)
@@ -473,12 +516,15 @@ Before the course starts, I meet the students and set up their computers. `READM
 
 - **[core]** Why do we visualise data?
 - **[core]** Fundamentals of scientific plots
-- **[core]** Figures, axes and subplots
+- **[core]** Figures, Axes and subplots (`fig, ax = plt.subplots()` is again a tuple unpacking: recap)
 - **[core]** Line plots, scatter plots, bar plots and histograms
 - **[core]** Axis labels, titles and legends
 - **[core]** Colours, markers and line styles
-- **[optional]** Figure size and DPI
-- **[core]** Exporting and saving figures
+- **[core]** Figure size with `figsize`
+- **[optional]** DPI
+- **[core]** Showing and saving figures: `plt.show()` and `savefig`
+- **[core]** Plotting directly from pandas (`df.plot(...)`, `Series.plot(...)`, which uses Matplotlib internally)
+- **[core]** Recap of tuple unpacking for plotting groups: `for name, group in df.groupby(...)`. Iterating over a `groupby` object is new at this point and is introduced here briefly.
 - **[optional]** Error bars (mean ± standard deviation)
 - **[optional]** Logarithmic axes (`set_yscale`) for expression and dose-response data
 - **[optional]** Colour-blind-friendly palettes and misleading axes (truncated or dual axes)
@@ -499,6 +545,7 @@ Before the course starts, I meet the students and set up their computers. `READM
 - **[optional]** Violin plots
 - **[core]** Scatter plots
 - **[optional]** Regression lines (`regplot`)
+- **[core]** `relplot` and `displot`
 - **[core]** Heatmaps, address Raw counts vs. normalised/log-transformed expression 
 - **[core]** Visualising correlations
 - **[core]** Comparing categories and groups
@@ -553,7 +600,7 @@ Before the course starts, I meet the students and set up their computers. `READM
 - **[core]** Exploring its structure and data quality
 - **[core]** Formulating research questions
 - **[core]** Developing an analysis plan with AI
-- **[core]** Generating and executing Python code step by step
+- **[core]** Executing an analysis step by step. recap earlier AI corners; practice in hands-on mini dataset.
 - **[core]** Filtering and summarising data
 - **[core]** Creating suitable visualisations
 - **[core]** Interpreting results
@@ -574,25 +621,25 @@ These summaries give direction and boundaries. The topic lists in the block desc
 
 - **Purpose:** Establish the working environment and introduce Python as a practical tool for biomedical data analysis. Students should become comfortable navigating and executing notebooks, which is essential for all subsequent practical work and the notebook-based exam.
 - **The one thing that must land:** A Jupyter notebook is an executable document, and the order in which cells are executed matters. Students must understand the difference between code, output and explanatory Markdown.
-- **Not in scope:** Installing or configuring complex development environments, advanced Python syntax, software engineering practices or detailed AI theory.
-- **Fit:** Establishes the tools and working habits needed for Block 02. Introduces AI as an assistant whose output must always be checked, not as a replacement for understanding.
-- **Common traps:** Executing cells out of order, assuming displayed output reflects the current code, confusing Markdown and code cells, and copying AI-generated code without understanding what it does.
+- **Not in scope:** Installing or configuring complex development environments, `import`, data types beyond what simple calculations need, advanced Python syntax, software engineering practices or detailed AI theory.
+- **Fit:** Establishes the tools and working habits needed for Block 02, including variables as stored values whose state lives in the kernel. Introduces AI as an assistant whose output must always be checked, not as a replacement for understanding.
+- **Common traps:** Executing cells out of order, a stale variable after a changed or skipped cell, running a cell twice by accident (`cells = cells * 2`), assuming displayed output reflects the current code, confusing Markdown and code cells, using a reserved keyword as a variable name, and copying AI-generated code without understanding what it does.
 
 ## Block 02 – Variables, Data Types and Operators
 
 - **Purpose:** Give students the basic building blocks needed to represent and manipulate values in Python. These concepts underpin every calculation and analysis later in the course.
-- **The one thing that must land:** Variables store values, and the type of a value determines which operations can be performed on it. Students should be able to follow simple calculations and recognise type-related problems.
+- **The one thing that must land:** The type of a value determines which operations can be performed on it. Students should be able to follow simple calculations and recognise type-related problems. (Variables themselves were introduced in Block 01.)
 - **Not in scope:** Advanced type systems, complex data structures, object-oriented programming or mathematical programming beyond simple biomedical calculations.
-- **Fit:** Builds directly on the first executable Python examples in Block 01 and prepares students for more structured logic and data organisation in Block 03.
-- **Common traps:** Confusing assignment (`=`) with comparison (`==`), mixing strings and numbers, overlooking integer versus floating-point values, and assuming Python automatically converts incompatible types.
+- **Fit:** Builds directly on the variables and the first executable Python examples of Block 01 and prepares students for more structured logic and data organisation in Block 03.
+- **Common traps:** Confusing assignment (`=`) with comparison (`==`), mixing strings and numbers, overlooking integer versus floating-point values, assuming Python automatically converts incompatible types, and wrong operator precedence in Boolean expressions (use parentheses).
 
 ## Block 03 – Control Flow and Data Structures
 
 - **Purpose:** Introduce the mechanisms that allow students to make decisions, repeat operations and organise multiple values. This is the transition from isolated commands to small, meaningful programs.
 - **The one thing that must land:** Conditions control which instructions are executed, while loops repeat instructions. Lists, tuples and dictionaries provide different ways to organise related data.
-- **Not in scope:** Advanced algorithms, recursion, complex nested data structures, algorithmic optimisation or extensive treatment of sets, or writing `try`/`except` blocks (reading error messages is in scope).
-- **Fit:** Uses the variables, types and operators from Block 02. Prepares students to write reusable functions and process biological sequences in Block 04.
-- **Common traps:** Indentation errors, incorrect condition logic, off-by-one errors in loops, confusing list indices with values, and modifying a data structure without understanding the consequences.
+- **Not in scope:** Advanced algorithms, recursion, complex nested data structures, algorithmic optimisation, extensive treatment of sets, or writing `try`/`except` blocks (reading error messages is in scope).
+- **Fit:** Uses the variables, types and operators from Block 02. Prepares students to write reusable functions and process biological sequences in Block 04. The loop version of the "growth by re-running" exercise from Block 01 belongs here.
+- **Common traps:** Indentation errors, incorrect condition logic, off-by-one errors in loops and slices, confusing list indices with values, reusing built-in names such as `list` or `sum` as variable names, and modifying a data structure without understanding the consequences.
 
 ## Block 04 – Functions and Biological Programming Tasks
 
@@ -687,7 +734,7 @@ Questions on the student's own code, the Python concepts of the course, data ana
 
 For each assignment, the agent prepares a question bank with expected answers (see the agent instructions).
 
-**What the top grade (1.0, "A") requires**
+**What the top grade (15 points) requires**
 
 - A perfectly runnable notebook that answers all scientific questions and produces plots and tables correctly.
 - A presentation in which the student can explain what they did and why.
@@ -698,7 +745,7 @@ For each assignment, the agent prepares a question bank with expected answers (s
 The exact requirements, including the point thresholds, are listed under "Grading scale and passing requirements" below. In short:
 
 - The course is passed with a complete notebook, a presentation in which the student can explain their approach, and the required points.
-- If the notebook contains errors, the student must fix them and hand in the corrected notebook. Errors do not cause a fail. They lower the grade through the runnability criterion in Part 1.
+- If the notebook contains errors, the student fixes them and hands in the corrected notebook, subject to the applicable examination regulations. Errors do not cause a fail. They lower the grade through the runnability criterion in Part 1.
 - The course is failed if no notebook is handed in, if the notebook is incomplete (not all tasks are addressed), or if the student cannot explain the approach they took.
 
 ### Grading scale and passing requirements
@@ -712,7 +759,7 @@ The examination is graded on a 100-point scale. The final grade is based on the 
 | Part 3 – Questions | 20% | 20 |
 | **Total** | **100%** | **100** |
 
-**Proposed grading scale:**
+**Proposed grading scale** (grades 0 to 5 correspond to fewer than 50 points and are fail grades; they are listed for completeness only):
 
 | Points | Grade |
 |---:|---:|
@@ -742,7 +789,7 @@ To pass the examination, students must:
 - Submit a complete notebook addressing all required tasks.
 - Demonstrate a basic understanding of their own analysis, code and scientific conclusions during the oral examination.
 
-Minor technical errors in the notebook reduce the score for runnability but do not automatically result in failure. If a notebook contains errors, students may be asked to correct and resubmit it, subject to the applicable examination regulations.
+Minor technical errors in the notebook reduce the score for runnability but do not automatically result in failure. If a notebook contains errors, students correct and resubmit it, subject to the applicable examination regulations.
 
 An incomplete submission or a failure to demonstrate a basic understanding of the submitted analysis may result in failing the examination.
 

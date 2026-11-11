@@ -1,5 +1,5 @@
 [project]
-name = "human-biology-course"
+name = "data_science_human_biology"
 version = "0.1.0"
 description = "Python course for Human Biology"
 requires-python = ">=3.12,<3.14"

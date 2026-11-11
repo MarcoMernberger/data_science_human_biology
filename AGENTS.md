@@ -99,7 +99,7 @@ Create `docs/syllabus.md` from `docs/course_spec.md`. For each of the 10 blocks 
 
 Also include:
 
-- a **concept index**: for every concept, the block where it is first introduced and whether it is core or optional. No concept may be used before it is introduced, and no core content may depend on optional content.
+- a **concept index**: for every concept, the block where it is first introduced and whether it is core or optional. It must be **complete**: it lists every function, method, operator, keyword, magic command (such as `?print`) and library that appears in core code, one entry each, and it is the vocabulary that all later phases may use. No concept may be used before it is introduced, and no core content may depend on optional content.
 - a **data concept**: one consistent fictional study (cohort, sample types, columns, genes, mutation status) and which dataset is used in which block.
 - the **cross-cutting topics** listed in `docs/course_spec.md`, with the block you propose for each.
 - a **learning-goal coverage table** that refines the planned coverage in `docs/course_spec.md`. Every learning goal must be introduced in at least one block and practised in at least two. Flag gaps.
@@ -239,9 +239,11 @@ Update `docs/development_plan.md`. Wait for approval. This is the final phase.
 
 - The `.py` files in `src/` are the only source. Never edit `.ipynb` files directly. The only hand-made notebook is `notebooks/00_setup_test.ipynb`: do not modify or rebuild it, and `make clean` must not delete it. Whenever a `.py` file changes, rebuild its `.ipynb` (`make notebooks`).
 - Jupytext percent format: markdown cells are `# %% [markdown]`, code cells are `# %%`. Keep the cell order. All notebooks use the same jupytext header and the same kernelspec (`python3`, display name "Python 3 (ipykernel)"), so they work with whatever virtual environment the student selects.
-- Lecture `.ipynb` files are built **with executed outputs** (students use them as a reference). Hands-on `.ipynb` files are built **with all outputs cleared**. (Marco: confirm or change.)
+- Lecture `.ipynb` files are built **with executed outputs** (students use them as a reference). Hands-on `.ipynb` files are built **with all outputs cleared**.
 - Notebooks must run top to bottom in a fresh kernel in under 60 seconds.
 - Do not use `try/except` and do not suppress exceptions to make checks pass. Fix the code instead.
+- **Error-handling teaching cells** are the second exception: Block 04 shows `try`/`except` and `raise` (reading level in the AI corner, writing level in an optional section). Such cells are allowed only where the syllabus lists this topic, are tagged `error-handling`, and must not hide a failure of the notebook itself. Never use a bare `except:` or `except: pass`, except in a cell that shows it on purpose as a bad AI example (also tagged `error-handling`, and the following cell must demonstrate what it hides).
+- **IPython-only syntax** (`?print`, `%` magics, `!` shell commands) is used only where the syllabus lists it (Block 01 shows `?print`). It is not valid Python, so in the `.py` source it must be stored in the form Jupytext uses (commented), and the syntax check, ruff and the build must still pass. Verify the round trip `.py` to `.ipynb`; if it does not work, tell me instead of working around it.
 - **Intentional errors** (traceback demonstrations, typical mistakes) are the only exception: such a cell is tagged `raises-exception`, is announced by a markdown cell ("the next cell fails on purpose"), and is placed at the end of its section. `make check` must verify that exactly these cells raise an error, and that every tagged cell really does.
 - Notebooks may never overwrite files in `data/raw/`. Anything a notebook writes goes to `outputs/` or, where the exercise says so, `data/processed/`.
 
@@ -257,7 +259,7 @@ Update `docs/development_plan.md`. Wait for approval. This is the final phase.
 6. All files that a notebook reads exist under `data/`. No absolute paths, no URLs.
 7. Every package imported by a notebook is declared in `pyproject.toml` (map import names to distribution names, for example `Bio` to `biopython` and `sklearn` to `scikit-learn`).
 8. Every notebook has the required sections (section 6), every exercise has a solution cell, and solution cells carry the `solution` tag.
-9. No `try:` in notebook sources, no `input()`, no network access.
+9. No `try:` in notebook sources, except in cells tagged `error-handling` (only in Block 04 and only if the syllabus lists it). No `input()`, no network access.
 10. `notebooks/*.ipynb` (except the setup test) match what is built from the current `src/*.py`.
 11. No notebook, doc or README in the public folders references a private path (`src/`, `scripts/`, `instructor/`, `docs/`).
 12. Once it exists: every link in `notebooks/Table_of_Contents.ipynb` points to an existing file, and every notebook in `notebooks/` is listed exactly once.
@@ -292,7 +294,7 @@ Update `docs/development_plan.md`. Wait for approval. This is the final phase.
 - Hands-on notebooks must be executable as delivered. Incomplete code is valid Python and commented out, so that it raises no exception.
 - Increasing difficulty ladder; mark the difficulty of each exercise. Include small problems that need independent thinking, not only recapitulation.
 - Exercises must not depend on previous unfinished exercises.
-- Every hands-on notebook contains 2 optional stretch exercises (marked as optional) and collapsed tiered hints (hint 1: the concept, hint 2: the approach).
+- Every hands-on notebook contains at least 4 optional stretch exercises (marked as optional) and collapsed tiered hints (hint 1: the concept, hint 2: the approach).
 - Every hands-on notebook contains an **AI usage log** (markdown table) before the knowledge section, with the columns for that block as defined in `docs/course_spec.md` (section "AI usage documentation"), and tells students to mark AI code with `# AI-generated` or `# AI-modified: <why>`. Show a filled example row.
 - Solutions are placed only in the final section. Each solution cell is tagged `solution` and collapsed (`jupyter: {source_hidden: true, outputs_hidden: true}`), so that neither code nor output is visible until expanded. Each solution is self-contained and uses its own variable names (for example with the suffix `_solution`), so it does not collide with the students' variables.
 
@@ -314,7 +316,7 @@ Update `docs/development_plan.md`. Wait for approval. This is the final phase.
 ## 7. Self-review checklist (run before presenting any notebook)
 
 - Does it follow the structure in the course spec, and does every cell have a purpose?
-- Is every concept either introduced here or listed as introduced earlier in the syllabus?
+- Is every concept either introduced here or listed as introduced earlier in the syllabus? Is every function, method, operator and keyword used in core code listed in the concept index (and nothing from a later block)?
 - Does the core content fit into 90 minutes, and are all optional sections flagged and tagged `optional`?
 - Could a student with no programming experience follow each code cell?
 - Are all results computed, and do solutions run?
